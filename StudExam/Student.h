@@ -8,7 +8,7 @@ class Student
 {
 protected:
 	string name;
-	string surname;
+	string type;
 	T age;
 	int group;
 public :
@@ -20,8 +20,6 @@ public :
 	string getSurname();
 	int getAge();
 	int getGroup();
-
-
 };
 #endif // !STUDENT_H
 

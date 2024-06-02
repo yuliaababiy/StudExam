@@ -1,0 +1,4 @@
+Name: Yulia Surname: Babiy Age: 18 Group: 1
+Name: Oleh Surname: Dub Age: 19 Group: 3
+Name: Maks Surname: Truba Age: 17 Group: 2 Subject: English_Art AverageScore:12.3
+Name: Severyn Surname: Shevchuk Age: 23 Group: 11

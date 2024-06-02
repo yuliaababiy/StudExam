@@ -36,7 +36,7 @@ void loadFromFile(vector<Student<T>*>& students, string filename)
 	int age, group;
 	double averageScore;
 	string type;
-	while (file >> type >> name >> surname >> subject >> age >> group >> averageScore)
+	while (file >> type >> name >> surname >> age >> group)
 	{
 		if (type == "Student")
 		{
@@ -44,11 +44,12 @@ void loadFromFile(vector<Student<T>*>& students, string filename)
 		}
 		else if (type == "StudentPro")
 		{
+			file >> subject >> averageScore;
 			students.push_back(new StudentPro<T>(name, surname, age, group, subject, averageScore));
 		}
 	}
 }
-int name()
+int main()
 {
 	vector<Student<int>*>students;
 	ofstream file("input.txt", ios::app);
@@ -61,11 +62,8 @@ int name()
 		cout << "3-print object into file: " << endl;
 		cout << "4-find the youngest student: " << endl;
 		cout << "5-find the oldest student: " << endl;
-		cout << "6-find the best student: " << endl;
-		cout << "7-find average age of all students: " << endl;
-		cout << "8-find sum of average score all students: " << endl;
-		cout << "9-find group with the highest average score: " << endl;
-		cout << "10-exit: " << endl; // +ксть студентів у кожній групі
+		cout << "6-find average age of all students: " << endl;
+		cout << "7-exit: " << endl;
 		cin >> choice;
 		if (choice == 1)
 		{
@@ -105,8 +103,6 @@ int name()
 				cin >> group;
 				cout << "Enter subject: ";
 				cin >> subject;
-				cout << "Enter subject: ";
-				cin >> subject;
 				cout << "Enter averageScore: ";
 				cin >> averageScore;
 				StudentPro<int>* p = new StudentPro<int>(name, surname, age, group, subject, averageScore);
@@ -122,12 +118,13 @@ int name()
 		else if (choice == 3)
 		{
 			loadFromFile(students, "input.txt");
-			loadFromFile(students, "output.txt");
+			saveToFile(students, "output.txt");
 		}
-		else if (choice == 4)//find the youngest studen
+		else if (choice == 4) //find the youngest student
 		{
 			loadFromFile(students, "input.txt");
-			Student<int>* youngest = new Student<int>("", "", 0, 0);
+			// Student<int>* youngest = new Student<int>("", "", 100, 0);
+			Student<int>* youngest = students[0];
 			for (auto s : students)
 			{
 				if (s->getAge() < youngest->getAge()) {
@@ -138,62 +135,38 @@ int name()
 			youngest->display();
 			cout << endl;
 		}
-		else if(choice == 5)//find the oldest student
+		else if (choice == 5) //find the oldest student
 		{
 			loadFromFile(students, "input.txt");
-			Student<int>* oldest = new Student<int>("", "", 0, 0);
+			// Student<int>* oldest = new Student<int>("", "", 0, 0);
+			Student<int>* oldest = students[0];
 			for (auto s : students)
 			{
 				if (s->getAge() > oldest->getAge())
 				{
 					oldest = s;
 				}
-				cout << "The oldest student: ";
-				oldest->display();
-				cout << endl;
 			}
-		}
-		else if (choice == 6) // the best students(найвищий середній бал)
-		{
-			loadFromFile(students, "input.txt");
-			StudentPro<int>* theBest = new StudentPro<int>("", 0);// or Student?
-			for (auto s : students)
-			{
-				if (s->getAverageScore() > theBest->getAverageScore())
-				{
-					theBest = s;
-				}
-				cout << "The best student: ";
-				theBest->display();
-				cout << endl;
-			}
-		}
-		else if (choice == 7)//find average age of students??
-		{
-			loadFromFile(students, "input.txt");
-			Student<int>* totalScore = new Student<int>("", " ", 0, 0);
-			return totalAge / students.size();
-			cout << "Average age all students: ";
+			cout << "The oldest student: ";
+			oldest->display();
 			cout << endl;
 		}
-		else if (choice == 8)//find sum of average score all students
+		else if (choice == 6) //find average age of students??
 		{
 			loadFromFile(students, "input.txt");
-			Student<int>* totalScore = new Student<int>("", 0.0);
-			averageScore = 0;
-			for (auto& s : students) 
+			int totalAge = 0;
+			double averageAge = 0;
+			for (auto s : students)
 			{
-				totalScore += students.averageScore;
+				totalAge += s->getAge();
 			}
-			return totalScore / students.size();
-		} 
-		else if (choice ==9)//find group with the highest average score
-		{
-
+			averageAge = totalAge / students.size();
+			cout << "Average age all students: "<< averageAge;
+			cout << endl;
 		}
-
-		
-}
+		else if (choice == 7)
+		{
+			break;
+		}
 	}
-
-};
+}

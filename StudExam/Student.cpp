@@ -7,13 +7,13 @@ Student<T> ::Student<T>(string name, string surname, T age, int group)
 template <typename T>
 void Student<T> ::displayIntoFile(ostream& out)
 {
-	out << "Name: " << name << "Surname: " << surname << "Age: " << age << "Group: " << group << endl;
+	out << "Name: " << name << " Surname: " << surname << " Age: " << age << " Group: " << group << endl;
 }
 
 template <typename T>
 void Student<T> ::display()
 {
-	cout << "Name: " << name << "Surname: " << surname << "Age: " << age << "Group: " << group << endl;
+	cout << "Name: " << name << " Surname: " << surname << " Age: " << age << " Group: " << group << endl;
 }
 
 template <typename T>
@@ -45,3 +45,6 @@ int Student<T> ::getGroup()
 {
 	return group;
 }
+
+template class Student<int>;
+template class Student<double>;

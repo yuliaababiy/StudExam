@@ -11,12 +11,11 @@ protected:
 	string subject;
 	double averageScore;
 public:
-	StudentPro(string name, string surname, T age, int group, string subject);
+	StudentPro(string name, string surname, T age, int group, string subject, double averageScore);
 	void displayIntoFile(ostream& out) override;
 	void display() override;
 	void saveWithSpaces(ostream& out) override;
 	double getAverageScore();
-
 };
 
 #endif // !STUDENTPRO

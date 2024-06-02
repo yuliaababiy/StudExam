@@ -1,3 +1,5 @@
 Student Yulia Babiy 18 1
 Student Oleh Dub 19 3
-StudentPro Maks Truba 17 2 English_Art
+StudentPro Maks Truba 17 2 English_Art 12
+Student d 10 10 10
+Student Severyn Shevchuk 101 101
